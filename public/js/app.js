@@ -71,6 +71,7 @@ angular.module('app', ['ui.router'])
                 $http.put(`/orden/${$scope.orden.c_order_id}/`, {lineas, anticipo_aceptado}).then(res => {
                     console.log(res.data)
                     alert(res.data)
+                    $state.reload();
 
                 }).catch(e => {
                     console.log(e)
