@@ -10,4 +10,8 @@ router.get('/', login.validarSesion, function(req, res, next) {
   })
 });
 
+router.post('/auth', login.validarSesion, function(req, res, next) {
+  res.send('ok')
+}) 
+
 module.exports = router;

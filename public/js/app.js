@@ -1,6 +1,6 @@
 
 angular.module('app', ['ui.router'])
-    .config(["$stateProvider", "$compileProvider", "$urlRouterProvider", function ($stateProvider, $compileProvider, $urlRouterProvider) {
+    .config(["$stateProvider", "$compileProvider", "$urlRouterProvider", "$httpProvider" , function ($stateProvider, $compileProvider, $urlRouterProvider, $httpProvider) {
         $stateProvider
             .state('orden', {
                 url: "/orden",
@@ -13,11 +13,27 @@ angular.module('app', ['ui.router'])
                 controller: 'orden_detalle'
             })
         
-            $urlRouterProvider.otherwise('/orden');
+        $urlRouterProvider.otherwise('/orden');
+
+        $httpProvider.interceptors.push(['$q', function($q) {
+            return {
+                'responseError': function(response) {
+                    if (response.status === 401) {
+                        window.location.replace(`/logout/`)
+                    }
+    
+                    return $q.reject(response);
+                }
+            };
+        }]);
          
     }])
     .run(["$state", "$http", "$templateCache", function ($state, $http, $templateCache) {
         loadTemplates($state, "orden", $http, $templateCache)
+        $http.post("/auth").then().catch(e => {
+            console.log(e)
+            window.location.replace(`/login/`)
+        })
 
     }])
 
