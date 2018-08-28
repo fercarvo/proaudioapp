@@ -33,8 +33,6 @@ function requestWS(server, web_service_name, ctx, username, password, params) {
    </soapenv:Body>
 </soapenv:Envelope>`
 
-console.log(soap)
-
     return new Promise((resolve, reject) => {
         var options = { 
             method: 'POST',
