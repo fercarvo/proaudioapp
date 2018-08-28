@@ -1,0 +1,30 @@
+<ol class="breadcrumb">
+    <li ui-sref-active="active" ui-sref="orden" class="breadcrumb-item">
+        <a >Orden Venta</a>
+    </li>
+</ol>
+
+<style>
+    .form-group label {
+        font-weight: bold;
+    }
+</style>
+<form ng-submit="buscarOrden(orden)">
+
+    <div ng-show="error.show" class="form-group">
+      <p style="color: red;">{{error.msg}}</p>
+    </div>
+    
+
+    <div class="form-group">
+        <label class="control-label ">Nro. Documento Orden</label>
+        <div class="">
+            <input required class="form-control" type="text" ng-model="orden">
+        </div>
+    </div>
+
+    <div class="form-group ">
+        <button type="submit" class="btn btn-info">Aceptar</button>
+        <button type="reset" class="btn btn-default">Cancelar</button>
+    </div>
+</form> 

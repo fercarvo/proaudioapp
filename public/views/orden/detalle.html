@@ -1,0 +1,70 @@
+<ol class="breadcrumb">
+    <li ui-sref="orden" class="breadcrumb-item">
+        <a >Orden Venta</a>
+    </li>
+    <li class="breadcrumb-item">{{ordendoc}}</li>
+</ol>
+
+  <div class="">
+    <div class="row">
+      
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+              <h5>Detalle de la orden</h5>                     
+          </div>
+  
+          <div class="card-body">
+                <div ng-show="error.show" class="form-group">
+                    <p style="color: red;">{{error.msg}}</p>
+                </div>
+                <table class="table table-bordered table-striped">
+
+                    <tbody style="text-align:left;">
+                        
+                        <tr>
+                            <td>No. del Documento: </td>
+                            <td>{{orden.documentno}}</td>
+                        </tr>
+                        <tr>
+                            <td>Referencia de Orden: </td>
+                            <td>{{orden.referencia_orden}}</td>
+                        </tr>
+                        <tr>
+                            <td>Fecha de la orden: </td>
+                            <td>{{orden.fecha_orden}}</td>
+                        </tr>
+                        <tr>
+                            <td>Paciente: </td>
+                            <td>{{orden.paciente}}</td>
+                        </tr>
+                        <tr>
+                            <td>Descripción: </td>
+                            <td>{{orden.descripcion}}</td>
+                        </tr>
+                        <tr>
+                            <td>Anticipo Aceptado:</td>
+                            <td><input form="actualizar" required ng-value="orden.anticipo_aceptado" name="anticipo_aceptado" min="0" title="Ingrese la nueva cantidad" type="number" step="any" style="width:100%;" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <form id="actualizar" ng-submit="submit_actualizar()">
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                </form>
+          </div>
+        </div>
+      </div>    
+  
+      <div class="col-md-6"> 
+          <div class="card">
+            <div class="card-header">
+              <h5>Lineas de Orden</h5>
+            </div>
+            <div class="card-body">
+                <table id="lineas_orden" style="width:100%"> </table>
+            </div>      
+          </div>
+  
+      </div>
+    </div>  
+  </div>
