@@ -65,7 +65,8 @@ angular.module('app', ['ui.router'])
                 {name: 'descripcion', alias: 'Descripción'},
                 {name: 'precio', alias: 'Precio'},
                 {name: 'neto_linea', alias: 'Neto Linea'},
-                {alias: 'Descuento Aceptado', cb: row => `<input form="actualizar" value="${row.descuento_aceptado}" name="${row.c_orderline_id}" required min="0" title="Ingrese la nueva cantidad" type="number" step="any" style="width:100%;" />`},
+                {name: 'descuento', alias: 'descuento'},
+                {alias: '% Descuento Aceptado', cb: row => `<input form="actualizar" value="${row.descuento_aceptado}" name="${row.c_orderline_id}" required min="0" title="Ingrese la nueva cantidad" type="number" step="any" style="width:100%;" />`},
             ])
 
 
@@ -167,7 +168,26 @@ async function cargarTabla (id, url, arrColumnas) {
             </tbody>
         `;
         
-        return $(`#${id}`).DataTable({ responsive: true })
+        return $(`#${id}`).DataTable({ 
+            responsive: true,
+            searching: false,
+            paging: false,
+            language: {
+                "emptyTable":   	"No existe información para mostrar",
+                "info":         	"",//"Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty":    	"No existe información para mostrar",
+                "infoFiltered": 	"(Filtrado de _MAX_ registros)",
+                "lengthMenu":   	"Mostrar _MENU_ registros por página",
+                "search":       	"Buscar",
+                "zeroRecords":  	"La busqueda no encontró resultados",
+                "paginate": {
+                    "first":    	"Primero",
+                    "previous": 	"Anterior",
+                    "next":     	"Siguiente",
+                    "last":     	"Último"
+                }
+            }
+         })
 
     } catch (e) {
         console.log(e);
