@@ -5,8 +5,16 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#071625">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#071625">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#071625">
+
+    <link rel="manifest" href="/manifest.webmanifest">
+
   <title>ITSC S.A Web APPs  </title>
   <!-- Bootstrap core CSS-->
   <link rel="stylesheet" href="/vendor/bootstrap.min.css">
@@ -19,6 +27,101 @@
 
   <!-- Custom styles for this template-->
   <link href="/css/sb-admin.css" rel="stylesheet">
+  <style>
+    .modal-body{
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+    }
+
+    .boton-itsc {
+      background: #d6d6d6 !important;
+    }
+
+    .bg-dark {
+        background-color: #071625!important;
+    }
+
+    body:-moz-full-screen {
+        background-color: #fff !important;
+    }
+    body:-webkit-full-screen {
+        background-color: #fff !important;
+    }
+    body:fullscreen {
+        background-color: #fff !important;
+    }
+    body:-ms-fullscreen {
+        background-color: #fff !important;
+    }
+
+    .modal-lg {
+        max-width: 85% !important;
+    }
+
+
+
+    @media only screen and (max-width: 800px) {
+        
+        /* Force table to not be like tables anymore */
+        .no-more-tables table, 
+        .no-more-tables thead, 
+        .no-more-tables tbody, 
+        .no-more-tables th, 
+        .no-more-tables td, 
+        .no-more-tables tr { 
+            display: block; 
+        }
+    
+        /* Hide table headers (but not display: none;, for accessibility) */
+        .no-more-tables thead tr { 
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+    
+        .no-more-tables tr { border: 1px solid #ccc; }
+    
+        .no-more-tables td { 
+            /* Behave  like a "row" */
+            border: none;
+            border-bottom: 1px solid #eee; 
+            position: relative;
+            padding-left: 40%; 
+            white-space: normal;
+            text-align:left;
+        }
+    
+        .no-more-tables td:before { 
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 6px;
+            left: 6px;
+            width: 38%; 
+            padding-right: 10px; 
+            white-space: nowrap;
+            text-align:left;
+            font-weight: bold;
+        }
+    
+        /*
+        Label the data
+        */
+        .no-more-tables td:before { content: attr(data-title); }
+    }
+  </style>
+    <script>
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/service-worker.js')
+          .then(function(reg) {
+            // registration worked
+            console.log('Registration succeeded. Scope is ' + reg.scope);
+          }).catch(function(error) {
+            // registration failed
+            console.log('Registration failed with ' + error);
+          });
+        }
+      </script>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top" ng-app="app">
@@ -94,6 +197,16 @@
 <script src="/vendor/dataTables.responsive.min.js"></script>
 <script src="/js/sb-admin.js"></script>
 <script src="/js/app.js"></script>
+<script>
+  $('.nav-item').on('click', function() {
+      var element =  $('.navbar-toggler-right')
+
+      if ( element.is(":visible") ) {
+          element.click()
+      } 
+  })
+
+</script>
 
 <script>
 

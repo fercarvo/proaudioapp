@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 var login = require('./login').router
 var { getSecret } = require('./login')
-var { requestWS } = require('./webservice')
+//var { requestWS } = require('./webservice')
+var { requestWS } = require('nodejs_idempierewebservice')
 var { pool, url } = require('../util/DB.js');
 
 /**
@@ -58,6 +59,7 @@ router.put("/orden/:id/", login.validarSesion, async (req, res, next) => {
         console.log(lineas, anticipo_aceptado, id);
 
         var {user, password} = await getSecret(req.session_itsc.ad_user_id);
+        var context = {...req.session_itsc, username: user, password}
 
         var params = [
             {column: "C_Order_ID", val: id},
@@ -66,7 +68,7 @@ router.put("/orden/:id/", login.validarSesion, async (req, res, next) => {
             {column: "descuentos", val: lineas.map(l => l.value).join("_")}
         ]
 
-        var data = await requestWS(url, "ActualizarOrdenVenta WS", req.session_itsc, user, password, params)
+        var data = await requestWS(url, "ActualizarOrdenVenta WS", context, params)
         res.send(data);
 
     } catch (e) {

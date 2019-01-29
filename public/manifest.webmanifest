@@ -1,0 +1,15 @@
+{
+    "background_color": "#071625",
+    "description": "PROAUDIO App by ITSC S.A (EC)",
+    "display": "standalone",
+    "icons": [
+      {
+        "src": "/icono-app.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ],
+    "name": "PROAUDIO App by ITSC S.A (EC)",
+    "short_name": "TÉCNICO",
+    "start_url": "/"
+}
