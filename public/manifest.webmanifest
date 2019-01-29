@@ -1,6 +1,6 @@
 {
     "background_color": "#071625",
-    "description": "PROAUDIO App by ITSC S.A (EC)",
+    "description": "PROAUDIO App by ITSC S.A.",
     "display": "standalone",
     "icons": [
       {
@@ -9,7 +9,7 @@
         "type": "image/png"
       }
     ],
-    "name": "PROAUDIO App by ITSC S.A (EC)",
+    "name": "PROAUDIO App by ITSC S.A.",
     "short_name": "PROAUDIO",
     "start_url": "/"
 }
