@@ -80,6 +80,9 @@ angular.module('app', ['ui.router'])
             $scope.error.msg = null
 
             if (confirm("Esta seguro que desea actualizar la orden?")) {
+
+                document.body.style.pointerEvents = "none" //Se bloquean los clicks
+
                 var data = $("input[form='actualizar']:visible").serializeArray()
 
                 var lineas = data.filter(el => el.name !== "anticipo_aceptado")
@@ -89,12 +92,14 @@ angular.module('app', ['ui.router'])
                     console.log(res.data)
                     alert(res.data)
                     $state.reload();
+                    document.body.style.pointerEvents = "all" //Se activan nuevamente los clicks
 
                 }).catch(e => {
                     console.log(e)
                     alert("Ha ocurrido un error")
                     $scope.error.show = true
                     $scope.error.msg = e.data
+                    document.body.style.pointerEvents = "all" //Se activan nuevamente los clicks
                 })
             }            
         }
