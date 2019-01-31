@@ -72,8 +72,9 @@ router.put("/orden/:id/", login.validarSesion, async (req, res, next) => {
         res.send(data);
 
     } catch (e) {
-        console.log("error", e)
-        next(new Error(e)) 
+        console.log("error", e);
+        res.status(500).send(e);
+        //next (e) 
     }    
 })
 
