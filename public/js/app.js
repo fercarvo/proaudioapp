@@ -79,7 +79,11 @@ angular.module('app', ['ui.router'])
             $scope.error.show = false
             $scope.error.msg = null
 
-            if (confirm("Esta seguro que desea actualizar la orden?")) {
+            //if (confirm("Esta seguro que desea actualizar la orden?")) {
+
+                if (window['waitingDialog']) {
+                    waitingDialog.show(`Procesando`);
+                }
 
                 document.body.style.pointerEvents = "none" //Se bloquean los clicks
 
@@ -90,18 +94,29 @@ angular.module('app', ['ui.router'])
 
                 $http.put(`/orden/${$scope.orden.c_order_id}/`, {lineas, anticipo_aceptado}).then(res => {
                     console.log(res.data)
+
+                    if (window['waitingDialog']) {
+                        waitingDialog.hide();
+                    }
+
                     alert(res.data)
                     $state.reload();
-                    document.body.style.pointerEvents = "all" //Se activan nuevamente los clicks
+                    document.body.style.pointerEvents = "all" //Se activan nuevamente los clicks                  
 
                 }).catch(e => {
                     console.log(e)
+
+                    if (window['waitingDialog']) {
+                        waitingDialog.hide();
+                    }
+
                     alert("Ha ocurrido un error")
                     $scope.error.show = true
                     $scope.error.msg = e.data
                     document.body.style.pointerEvents = "all" //Se activan nuevamente los clicks
+                
                 })
-            }            
+            //}            
         }
 
         $scope.$on("$destroy", function () { 
