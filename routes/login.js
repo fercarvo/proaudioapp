@@ -43,8 +43,6 @@ router.post('/login', async function (req, res, next) {
 
     try {
 
-        console.log(req.body.ultimo_login)
-
         if (req.body.ultimo_login !== 'Y') {
             var data_last_log = await getLastLogin(req.body.usuario, req.body.clave);
             
@@ -86,7 +84,7 @@ router.post('/rol', async function (req, res, next) {
         var data = await createPayload(req.body.usuario, req.body.clave, req.body.ad_client_id, req.body.ad_role_id, req.body.ad_org_id, req.body.m_warehouse_id)
         var token = createToken(data)
 
-        res.cookie('session_itsc', token,  { maxAge: 1000*60*60*12, httpOnly: true})
+        res.cookie('session_itsc', token,  { maxAge: 1000*60*60*72, httpOnly: true})
         res.redirect('/')  
         
     } catch (e) {
