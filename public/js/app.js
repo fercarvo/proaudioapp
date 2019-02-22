@@ -110,7 +110,7 @@ angular.module('app', ['ui.router'])
                         waitingDialog.hide();
                     }
 
-                    alert("Ha ocurrido un error")
+                    alert("Error: "+e)
                     $scope.error.show = true
                     $scope.error.msg = e.data
                     document.body.style.pointerEvents = "all" //Se activan nuevamente los clicks
