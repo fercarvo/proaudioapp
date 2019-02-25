@@ -7,7 +7,7 @@
  * Este SW servira para incrementar el performance y reducir el trafico de los aplicativos usados en ITSC
  */
 
-const CACHE_NAME = 'Static-PROAUDIO-APP-v1.0'
+const CACHE_NAME = 'Static-PROAUDIO-APP-v1.5'
 
 self.addEventListener('install', function (event) {
     event.waitUntil(async function() {
