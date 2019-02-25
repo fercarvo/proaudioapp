@@ -66,7 +66,7 @@ angular.module('app', ['ui.router'])
                 {name: 'precio', alias: 'Precio'},
                 {name: 'neto_linea', alias: 'Neto Linea'},
                 {name: 'descuento', alias: 'descuento'},
-                {alias: '% Descuento Aceptado', cb: row => `<input form="actualizar" value="${row.descuento_aceptado}" name="${row.c_orderline_id}" required min="0" title="Ingrese la nueva cantidad" type="number" step="any" style="width:100%;" />`},
+                {alias: '% Descuento Aceptado', cb: row => `<input form="actualizar" value="${row.descuento_aceptado}" name="${row.c_orderline_id}" required title="Numeros con punto (.) separador decimal" pattern="[0-9.]+" type="text" style="width:100%;" />`},
             ])
 
 
